@@ -1,4 +1,4 @@
-# 🚀 AsnanP Portfolio | AI/ML Developer & UX Designer
+# 🚀 MY Portfolio | AI/ML Developer & UX 3D Designer
 
 ![Portfolio Banner](image.png)
 
