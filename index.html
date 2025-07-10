@@ -7023,83 +7023,131 @@ const orbExplanations = [
   "🎆 Interactive cosmic dust that follows your cursor!"
 ];
 
-function updateLoadingProgress(progress, modelName = '') {
-  const percentage = Math.round(progress);
-  const loadingPercentage = document.querySelector('.loading-percentage');
-  const loadingTipsElement = document.getElementById('loading-tips');
-  
-  // Update percentage display
-  if (loadingPercentage) {
-    loadingPercentage.textContent = `${percentage}%`;
+// Real-Time Model Loading Tracker
+class RealTimeLoadingTracker {
+  constructor() {
+    this.loadingScreen = document.querySelector('.loading-screen');
+    this.progressBar = document.querySelector('.progress-fill');
+    this.progressPercentage = document.getElementById('progress-percentage');
+    this.loadingStatus = document.getElementById('loading-status');
+    this.loadingTips = document.getElementById('loading-tips');
+
+    this.totalModels = 6; // Main model + 5 additional models
+    this.loadedModels = 0;
+    this.modelProgress = {}; // Track individual model progress
+    this.startTime = Date.now();
+
+    this.init();
   }
-  
-  // Update progress bar
-  if (progressBar) {
-    progressBar.style.width = `${percentage}%`;
+
+  init() {
+    this.updateDisplay(0, "Initializing 3D models...");
+
+    // Override global functions for model loading callbacks
+    window.updateLoadingProgress = this.updateLoadingProgress.bind(this);
+    window.onModelLoadStart = this.onModelLoadStart.bind(this);
+    window.onModelLoadProgress = this.onModelLoadProgress.bind(this);
+    window.onModelLoadComplete = this.onModelLoadComplete.bind(this);
+    window.onModelLoadError = this.onModelLoadError.bind(this);
   }
-  
-  // Update dynamic tips based on progress with orb explanations
-  if (loadingTipsElement) {
-    let tipIndex = Math.floor((percentage / 100) * (loadingTips.length - 1));
-    tipIndex = Math.min(tipIndex, loadingTips.length - 1);
-    
-    // Show orb explanations at specific intervals
-    if (percentage >= 80) {
-      const orbIndex = Math.floor(Math.random() * orbExplanations.length);
-      loadingTipsElement.textContent = orbExplanations[orbIndex];
-    } else {
-      loadingTipsElement.textContent = loadingTips[tipIndex];
+
+  updateLoadingProgress(progress, modelName = '') {
+    // Legacy compatibility function
+    this.updateDisplay(progress, modelName || "Loading...");
+  }
+
+  onModelLoadStart(modelName) {
+    this.modelProgress[modelName] = 0;
+    this.updateDisplay(this.calculateTotalProgress(), `Loading ${modelName}...`);
+  }
+
+  onModelLoadProgress(progress, modelName) {
+    this.modelProgress[modelName] = progress;
+    this.updateDisplay(this.calculateTotalProgress(), `Loading ${modelName}... ${Math.round(progress)}%`);
+  }
+
+  onModelLoadComplete(modelName) {
+    this.modelProgress[modelName] = 100;
+    this.loadedModels++;
+
+    const totalProgress = this.calculateTotalProgress();
+    this.updateDisplay(totalProgress, `${modelName} loaded!`);
+
+    if (this.loadedModels >= this.totalModels) {
+      this.completeLoading();
     }
   }
-  
-  // Update accessibility attributes
-  if (progressElement) {
-    progressElement.setAttribute('aria-valuenow', percentage);
-    progressElement.setAttribute('aria-label', `Loading progress: ${percentage}%`);
+
+  onModelLoadError(modelName, error) {
+    console.error(`Failed to load ${modelName}:`, error);
+    this.modelProgress[modelName] = 100; // Count as complete to continue
+    this.loadedModels++;
+
+    const totalProgress = this.calculateTotalProgress();
+    this.updateDisplay(totalProgress, `${modelName} failed, continuing...`);
+
+    if (this.loadedModels >= this.totalModels) {
+      this.completeLoading();
+    }
   }
-  
-  // Add special effects at milestones
-  if (percentage === 25 || percentage === 50 || percentage === 75) {
-    createLoadingBurst();
+
+  calculateTotalProgress() {
+    const modelProgressValues = Object.values(this.modelProgress);
+    if (modelProgressValues.length === 0) return 0;
+
+    const totalProgress = modelProgressValues.reduce((sum, progress) => sum + progress, 0);
+    return Math.min(100, (totalProgress / this.totalModels));
   }
-}
-// Create loading milestone burst effect
-function createLoadingBurst() {
-  const container = document.querySelector('.loading-container');
-  if (!container || !window.performanceSettings?.enableComplexAnimations) return;
-  
-  for (let i = 0; i < 8; i++) {
+
+  updateDisplay(progress, status) {
+    const percentage = Math.round(progress);
+    const elapsedTime = ((Date.now() - this.startTime) / 1000).toFixed(1);
+
+    // Update percentage
+    if (this.progressPercentage) {
+      this.progressPercentage.textContent = `${percentage}%`;
+    }
+
+    // Update progress bar
+    if (this.progressBar) {
+      this.progressBar.style.width = `${percentage}%`;
+    }
+
+    // Update status with real model name
+    if (this.loadingStatus) {
+      this.loadingStatus.textContent = status;
+    }
+
+    // Update tips with real-time info
+    if (this.loadingTips) {
+      this.loadingTips.textContent = `Time: ${elapsedTime}s | Models: ${this.loadedModels}/${this.totalModels}`;
+    }
+  }
+
+  completeLoading() {
+    const totalTime = ((Date.now() - this.startTime) / 1000).toFixed(1);
+    this.updateDisplay(100, "All models loaded!");
+
+    if (this.loadingTips) {
+      this.loadingTips.textContent = `Completed in ${totalTime} seconds!`;
+    }
+
     setTimeout(() => {
-      const particle = document.createElement('div');
-      particle.style.cssText = `
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: linear-gradient(45deg, #00ffff, #ff00ff);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 10;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        animation: burstParticle 1s ease-out forwards;
-      `;
-      
-      const angle = (Math.PI * 2 * i) / 8;
-      const distance = 50;
-      particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
-      particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
-      
-      container.appendChild(particle);
-      
-      setTimeout(() => {
-        if (particle.parentNode) {
-          particle.remove();
-        }
-      }, 1000);
-    }, i * 50);
+      if (this.loadingScreen) {
+        this.loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+          this.loadingScreen.style.display = 'none';
+        }, 1000);
+      }
+    }, 800);
   }
 }
+
+// Initialize real-time loading tracker
+document.addEventListener('DOMContentLoaded', () => {
+  new RealTimeLoadingTracker();
+});
+// Real-time loading - no burst effects needed
 function onModelLoadStart(modelName) {
   updateLoadingProgress((loadedModels / totalModels) * 100, modelName);
 }
