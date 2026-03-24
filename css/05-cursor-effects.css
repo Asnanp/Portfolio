@@ -1,0 +1,170 @@
+/* 🎯 ADVANCED CURSOR EFFECTS
+   ==================================================
+   Custom cursor with trail and particle animations
+   - Trail effects
+   - Particle explosions
+   - Hover effects
+   - Performance optimizations
+*/
+
+.cursor-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.trail-dot {
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+  animation: trailFade 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.trail-particle {
+  width: 6px;
+  height: 6px;
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0.8) 0%, transparent 70%);
+  animation: trailParticle 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes trailFade {
+  0% { opacity: 0.8; transform: scale3d(1, 1, 1); will-change: transform, opacity; }
+  100% { opacity: 0; transform: scale3d(0.2, 0.2, 1); }
+}
+
+@keyframes trailParticle {
+  0% { opacity: 0.9; transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 0deg); will-change: transform, opacity; }
+  100% { opacity: 0; transform: scale3d(0, 0, 1) rotate3d(0, 0, 1, 180deg); }
+}
+
+.cursor-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
+
+.particle-explosion {
+  animation: particleExplode 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.particle-magnetic {
+  animation: particleMagnetic 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.particle-spiral {
+  animation: particleSpiral 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes particleExplode {
+  0% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg);
+    will-change: transform, opacity;
+  }
+  100% {
+    opacity: 0;
+    transform: scale3d(0.2, 0.2, 1) translate3d(var(--tx), var(--ty), 0) rotate3d(0, 0, 1, 720deg);
+  }
+}
+
+@keyframes particleMagnetic {
+  0% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+    will-change: transform, opacity;
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale3d(1.5, 1.5, 1) translate3d(calc(var(--tx) * 0.5), calc(var(--ty) * 0.5), 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale3d(0, 0, 1) translate3d(var(--tx), var(--ty), 0);
+  }
+}
+
+@keyframes particleSpiral {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(1080deg) translateX(var(--spiral-radius, 100px));
+  }
+}
+
+@keyframes burstParticle {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0);
+    opacity: 0;
+  }
+}
+
+.floating-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--orb-color) 0%, transparent 70%);
+  animation: orbFloat 20s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale3d(1, 1, 1); will-change: transform; }
+  25% { transform: translate3d(10px, -20px, 0) scale3d(1.1, 1.1, 1); }
+  50% { transform: translate3d(-10px, 0, 0) scale3d(0.9, 0.9, 1); }
+  75% { transform: translate3d(5px, 10px, 0) scale3d(1.05, 1.05, 1); }
+}
+
+@keyframes orbGlow {
+  0%, 100% {
+    filter: blur(0.5px) brightness(1);
+    box-shadow: 
+      0 0 10px currentColor,
+      0 0 20px rgba(0, 255, 255, 0.3);
+  }
+  50% {
+    filter: blur(1px) brightness(1.5);
+    box-shadow: 
+      0 0 20px currentColor,
+      0 0 40px rgba(255, 0, 255, 0.5);
+  }
+}
+
+.cosmic-orbs-system {
+  animation: systemPulse 8s ease-in-out infinite;
+}
+
+@keyframes systemPulse {
+  0%, 100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  25% {
+    filter: hue-rotate(90deg) brightness(1.1);
+  }
+  50% {
+    filter: hue-rotate(180deg) brightness(1.2);
+  }
+  75% {
+    filter: hue-rotate(270deg) brightness(1.1);
+  }
+}

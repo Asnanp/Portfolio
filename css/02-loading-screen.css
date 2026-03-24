@@ -1,0 +1,292 @@
+/* 🌌 LOADING SCREEN & ANIMATIONS
+   ==================================================
+   Ultra-enhanced loading screen with particle effects
+   - Background shifts
+   - Spinner animations  
+   - Progress bar
+   - Performance optimizations
+*/
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(138, 43, 226, 0.8) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.8) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.6) 0%, transparent 60%),
+    linear-gradient(135deg, #000000 0%, #1a0033 20%, #330066 40%, #4a0080 60%, #1a0033 80%, #000000 100%);
+  background-size: 200% 200%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  animation: backgroundShift 15s ease-in-out infinite;
+  will-change: opacity, background-position;
+  contain: layout style paint;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes backgroundShift {
+  0%, 100% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 50%, 0% 0%;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    background-position: 100% 0%, 0% 100%, 50% 50%, 25% 50%, 0% 0%;
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    background-position: 100% 100%, 100% 100%, 100% 100%, 50% 50%, 0% 0%;
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    background-position: 0% 100%, 100% 0%, 50% 50%, 75% 50%, 0% 0%;
+    filter: hue-rotate(270deg);
+  }
+}
+
+.loading-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(3px 3px at 20px 30px, #00ffff, transparent),
+    radial-gradient(2px 2px at 40px 70px, #ff00ff, transparent),
+    radial-gradient(4px 4px at 90px 40px, #8a2be2, transparent),
+    radial-gradient(1px 1px at 130px 80px, #00ffff, transparent),
+    radial-gradient(2px 2px at 160px 30px, #ff00ff, transparent),
+    radial-gradient(3px 3px at 200px 60px, #00ff88, transparent),
+    radial-gradient(1px 1px at 250px 20px, #ff8800, transparent),
+    radial-gradient(2px 2px at 300px 90px, #8800ff, transparent);
+  background-repeat: repeat;
+  background-size: 300px 150px;
+  animation: particleFloat 25s linear infinite, particleGlow 8s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.loading-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle 8px at 10% 20%, rgba(0, 255, 255, 0.8), transparent),
+    radial-gradient(circle 12px at 90% 30%, rgba(255, 0, 255, 0.6), transparent),
+    radial-gradient(circle 6px at 30% 80%, rgba(138, 43, 226, 0.7), transparent),
+    radial-gradient(circle 10px at 70% 70%, rgba(0, 255, 136, 0.5), transparent),
+    radial-gradient(circle 15px at 50% 10%, rgba(255, 136, 0, 0.4), transparent);
+  background-repeat: no-repeat;
+  animation: orbFloat 12s ease-in-out infinite, orbPulse 4s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+@keyframes particleFloat {
+  0% { 
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(25px, -25vh, 0);
+  }
+  50% {
+    transform: translate3d(-25px, -50vh, 0);
+  }
+  75% {
+    transform: translate3d(25px, -75vh, 0);
+  }
+  100% { 
+    transform: translate3d(0, -100vh, 0);
+  }
+}
+
+@keyframes particleGlow {
+  0%, 100% { opacity: 0.4; filter: brightness(1) saturate(1); }
+  50% { opacity: 0.8; filter: brightness(1.5) saturate(1.5); }
+}
+
+@keyframes orbFloat {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1); 
+    background-position: 10% 20%, 90% 30%, 30% 80%, 70% 70%, 50% 10%;
+  }
+  25% { 
+    transform: translate(20px, -30px) scale(1.1); 
+    background-position: 15% 25%, 85% 35%, 35% 75%, 65% 65%, 55% 15%;
+  }
+  50% { 
+    transform: translate(-10px, -20px) scale(0.9); 
+    background-position: 20% 30%, 80% 40%, 40% 70%, 60% 60%, 60% 20%;
+  }
+  75% { 
+    transform: translate(30px, -10px) scale(1.2); 
+    background-position: 25% 35%, 75% 45%, 45% 65%, 55% 55%, 65% 25%;
+  }
+}
+
+@keyframes orbPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.loading-container {
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 2;
+  transform: translateY(0);
+  animation: containerPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes containerPulse {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-10px) scale(1.02); }
+}
+
+.loading-text {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #00ffff, #ff00ff, #8a2be2, #00ffff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientFlow 3s ease-in-out infinite;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.loading-progress {
+  position: relative;
+  width: 300px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, 
+    #00ffff 0%, 
+    #ff00ff 25%, 
+    #8a2be2 50%, 
+    #00ffff 75%, 
+    #ff00ff 100%
+  );
+  background-size: 200% 100%;
+  border-radius: 10px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: progressGlow 2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent
+  );
+  animation: progressShine 1.5s infinite;
+}
+
+@keyframes progressGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    background-position: 100% 50%;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.7);
+  }
+}
+
+@keyframes progressShine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.loading-percentage {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  font-size: 0.9rem;
+  color: #00ffff;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.loading-tips {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  animation: tipsFade 4s ease-in-out infinite;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+@keyframes tipsFade {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .loading-spinner {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .loading-text {
+    font-size: 1.5rem;
+  }
+  
+  .loading-progress {
+    width: 250px;
+  }
+  
+  .loading-tips {
+    font-size: 0.9rem;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-text {
+    font-size: 1.2rem;
+  }
+  
+  .loading-progress {
+    width: 200px;
+    height: 4px;
+  }
+  
+  .loading-tips {
+    font-size: 0.8rem;
+    max-width: 250px;
+  }
+  
+  .loading-screen::before {
+    display: none;
+  }
+}

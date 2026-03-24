@@ -1,0 +1,75 @@
+/* 🎨 MAIN STYLESHEET INDEX
+   ==================================================
+   Central CSS file that imports all modular styles
+   Organized by functionality for maintainability
+*/
+
+/* 1. Base Reset & Typography */
+@import url('./01-reset-base.css');
+
+/* 2. Loading Screen & Animations */
+@import url('./02-loading-screen.css');
+
+/* 3. Spinner Effects */
+@import url('./03-spinner.css');
+
+/* 4. Stats Section */
+@import url('./04-stats-section.css');
+
+/* 5. Cursor Effects */
+@import url('./05-cursor-effects.css');
+
+/* 6. Layout & Sections */
+@import url('./06-layout.css');
+
+/* 7. Scroll Indicator & Navbar */
+@import url('./07-scroll-navbar.css');
+
+/* ===== THEME VARIABLES ===== */
+:root {
+  --primary-color: #8a2be2;
+  --secondary-color: #00ffff;
+  --accent-color: #ff00ff;
+  --text-color: #ffffff;
+  --bg-dark: #0a0a0a;
+  --bg-darker: #121212;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Smooth scroll behavior for entire document */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== ACCESSIBILITY ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ===== FOCUS STATES ===== */
+:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+/* ===== MEDIA QUERY BREAKPOINTS ===== */
+/* Mobile: < 480px */
+/* Tablet: 480px - 768px */
+/* Desktop: 768px - 1024px */
+/* Large: > 1024px */
