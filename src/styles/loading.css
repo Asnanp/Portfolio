@@ -1,0 +1,181 @@
+/* ========================================
+    LOADING SCREEN — Monochrome Minimal
+   ======================================== */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.loading-screen::before {
+  display: none; /* No colorful gradients */
+}
+
+.loading-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Spinner — Clean White */
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.spinner-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-top-color: #fff;
+  animation: spin 1.2s linear infinite;
+}
+
+.spinner-ring:nth-child(2) {
+  inset: 10px;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  animation-direction: reverse;
+  animation-duration: 0.9s;
+}
+
+.spinner-ring:nth-child(3) {
+  inset: 20px;
+  border-top-color: rgba(255, 255, 255, 0.2);
+  animation-duration: 1.5s;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Loading Text */
+.loading-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  background: none;
+  margin-bottom: 1.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Progress Bar */
+.loading-progress {
+  width: 180px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #fff;
+  border-radius: inherit;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  to { transform: translateX(100%); }
+}
+
+/* Loading Stages */
+.loading-stages {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.3;
+  transition: all 0.4s ease;
+}
+
+.stage.active {
+  opacity: 1;
+}
+
+.stage-icon {
+  font-size: 1.3rem;
+  filter: grayscale(1) brightness(2);
+  transition: all 0.3s ease;
+}
+
+.stage.active .stage-icon {
+  filter: grayscale(0);
+}
+
+.stage span {
+  font-size: 0.7rem;
+  color: #555;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Loading Tips */
+.loading-tips {
+  text-align: center;
+}
+
+.tip-text {
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+.tip-progress {
+  width: 50px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.tip-progress::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.3);
+  animation: tipSlide 1.5s ease-in-out infinite;
+}
+
+@keyframes tipSlide {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* Particles — hidden */
+.loading-particles {
+  display: none;
+}

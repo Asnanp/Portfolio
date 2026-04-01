@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | AsnanP - ML Engineer</title>
+    <meta
+      name="description"
+      content="Explore Asnan P's machine learning projects including Ad Detector, House Prediction, Movie Recommender, and LIGO Glitch Detector."
+    />
+    <meta
+      name="keywords"
+      content="Machine Learning, AI, Python, TensorFlow, PyTorch, Data Science, Portfolio, Neural Networks, Projects"
+    />
+    <meta name="author" content="Asnan P" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Projects | AsnanP Portfolio" />
+    <meta
+      property="og:description"
+      content="Explore innovative ML projects in AI, Deep Learning, and Data Science"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://asnanp.netlify.app" />
+    <meta property="og:image" content="https://asnanp.netlify.app/image.jpg" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Projects | AsnanP Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Explore innovative ML projects in AI, Deep Learning, and Data Science"
+    />
+    <meta name="twitter:image" content="https://asnanp.netlify.app/image.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/2.jpg" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/assets/images/2.jpg" />
+
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+      <div class="loading-container">
+        <div class="loading-spinner">
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+          <div class="spinner-core"></div>
+        </div>
+        <div class="loading-text">AsnanP Portfolio</div>
+        <div class="loading-progress">
+          <div class="progress-bar"></div>
+          <div class="progress-glow"></div>
+        </div>
+        <div class="loading-stages">
+          <div class="stage active" id="stage-0">
+            <div class="stage-icon">🚀</div>
+            <span>Loading</span>
+          </div>
+          <div class="stage" id="stage-1">
+            <div class="stage-icon">🎨</div>
+            <span>Assets</span>
+          </div>
+          <div class="stage" id="stage-2">
+            <div class="stage-icon">🎯</div>
+            <span>3D Models</span>
+          </div>
+          <div class="stage" id="stage-3">
+            <div class="stage-icon">⚡</div>
+            <span>Optimizing</span>
+          </div>
+          <div class="stage" id="stage-4">
+            <div class="stage-icon">✨</div>
+            <span>Ready</span>
+          </div>
+        </div>
+        <div class="loading-tips">
+          <div class="tip-text">Loading optimized experience...</div>
+          <div class="tip-progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo -->
+    <div class="logo" aria-label="Asnan's Logo" data-cursor="image">A</div>
+
+    <!-- Navigation -->
+    <nav class="ultra-navbar" aria-label="Main navigation" role="navigation">
+      <div class="ultra-nav-container">
+        <ul class="ultra-nav-links">
+          <li>
+            <a
+              href="/pages/home.html"
+              class="ultra-nav-link"
+              aria-label="Navigate to Home"
+              data-section="home"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="/pages/about.html"
+              class="ultra-nav-link"
+              aria-label="Navigate to About"
+              data-section="about"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="/pages/projects.html"
+              class="ultra-nav-link active"
+              aria-label="Navigate to Projects"
+              data-section="projects"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a
+              href="/pages/contact.html"
+              class="ultra-nav-link"
+              aria-label="Navigate to Contact"
+              data-section="contact"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Audio Toggle -->
+    <button
+      class="floating-audio-toggle"
+      id="audioToggle"
+      aria-label="Toggle sound effects"
+      aria-pressed="true"
+      tabindex="0"
+    >
+      <div class="audio-toggle-pulse"></div>
+      <div class="audio-toggle-ring"></div>
+      <div class="audio-toggle-hex"></div>
+      <div class="audio-toggle-inner">
+        <span class="audio-icon">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 5L6 9H2v6h4l5 4V5z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              class="audio-wave1"
+              d="M19 9a4 4 0 010 6"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+            <path
+              class="audio-wave2"
+              d="M21 7a8 8 0 010 10"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+      </div>
+      <span class="audio-tooltip">Sound Effects</span>
+    </button>
+
+    <!-- Floating Orbs -->
+    <div class="floating-orbs" id="orbs">
+      <div class="floating-orb"></div>
+      <div class="floating-orb"></div>
+      <div class="floating-orb"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor">
+      <div class="cursor-core"></div>
+      <div class="cursor-aura"></div>
+      <div class="cursor-outer"></div>
+      <div class="cursor-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Projects Section -->
+      <section class="projects-section" id="projects">
+        <div class="projects-container">
+          <div class="section-header enhanced-section-header">
+            <h2
+              class="section-title enhanced-section-title"
+              data-text="Featured Projects"
+            >
+              Featured Projects
+            </h2>
+            <p class="section-subtitle enhanced-section-subtitle">
+              Explore my innovative experiments in AI, Machine Learning, and
+              Data Science
+            </p>
+            <div class="section-glow"></div>
+          </div>
+
+          <div class="projects-grid enhanced-projects-grid">
+            <!-- Ad Detector -->
+            <article
+              class="project-card enhanced-project-card glass-card animated-border hover-glow"
+              data-cursor="special"
+            >
+              <div class="project-content">
+                <div class="project-image">
+                  <img
+                    src="/assets/images/ad.png"
+                    alt="Ad Prediction"
+                  />
+                  <div class="project-overlay">
+                    <div class="project-actions">
+                      <a
+                        href="https://github.com/Asnanp/Ad-Detector"
+                        class="action-btn"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                          ></path>
+                        </svg>
+                        <span>View Code</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="project-title" data-text="Ad Detector">
+                  Ad Detector
+                </h3>
+                <p class="project-description">
+                  A real-time ad detection system that scans web pages,
+                  identifies fake ads, pop-ups, and sponsored posts using
+                  advanced machine learning. Features live ad highlighting, AI
+                  analysis, and a user-friendly interface.
+                </p>
+                <div class="project-tech-stack">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Scikit-Learn</span>
+                  <span class="tech-tag">NLP</span>
+                  <span class="tech-tag">Flask</span>
+                  <span class="tech-tag">Computer Vision</span>
+                </div>
+              </div>
+              <div class="project-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+            </article>
+
+            <!-- House Prediction -->
+            <article
+              class="project-card enhanced-project-card glass-card animated-border hover-glow"
+              data-cursor="special"
+            >
+              <div class="project-content">
+                <div class="project-image">
+                  <img
+                    src="/assets/images/house.png"
+                    alt="Advanced House Prediction"
+                  />
+                  <div class="project-overlay">
+                    <div class="project-actions">
+                      <a
+                        href="https://github.com/Asnanp/Advanced_House_Prediction"
+                        class="action-btn"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                          ></path>
+                        </svg>
+                        <span>View Code</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <h3
+                  class="project-title"
+                  data-text="Advanced House Prediction"
+                >
+                  Advanced House Prediction
+                </h3>
+                <p class="project-description">
+                  Predicts house prices using advanced ML models based on
+                  features like location, size, and amenities. Includes
+                  visualizations, data cleaning, and real-time predictions via
+                  web app.
+                </p>
+                <div class="project-tech-stack">
+                  <span class="tech-tag">Data Visualization</span>
+                  <span class="tech-tag">Feature Engineering</span>
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Regression Algorithms</span>
+                  <span class="tech-tag">Real-time</span>
+                </div>
+              </div>
+              <div class="project-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+            </article>
+
+            <!-- Movie Recommender -->
+            <article
+              class="project-card enhanced-project-card glass-card animated-border hover-glow"
+              data-cursor="special"
+            >
+              <div class="project-content">
+                <div class="project-image">
+                  <img
+                    src="/assets/images/recoomndation.png"
+                    alt="Movie Recommender System"
+                  />
+                  <div class="project-overlay">
+                    <div class="project-actions">
+                      <a
+                        href="https://github.com/Asnanp/Recommender_system"
+                        class="action-btn"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                          ></path>
+                        </svg>
+                        <span>View Code</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="project-title" data-text="Movie Recommender System">
+                  Movie Recommender System
+                </h3>
+                <p class="project-description">
+                  Recommends personalized movies using content-based and
+                  collaborative filtering. Gives smart suggestions based on user
+                  preferences and movie similarity.
+                </p>
+                <div class="project-tech-stack">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Content-Based Filtering</span>
+                  <span class="tech-tag">Collaborative Filtering</span>
+                  <span class="tech-tag">Real-time Recommendation</span>
+                </div>
+              </div>
+              <div class="project-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+            </article>
+
+            <!-- LIGO Glitch Detector -->
+            <article
+              class="project-card enhanced-project-card glass-card animated-border hover-glow"
+              data-cursor="special"
+            >
+              <div class="project-content">
+                <div class="project-image">
+                  <img
+                    src="/assets/images/gravity.png"
+                    alt="LIGO Glitch Detector"
+                  />
+                  <div class="project-overlay">
+                    <div class="project-actions">
+                      <a
+                        href="https://github.com/Asnanp/LIGO-Gravitational-Wave-Glitch-Detection"
+                        class="action-btn"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                          ></path>
+                        </svg>
+                        <span>View Code</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="project-title" data-text="LIGO Glitch Detector">
+                  LIGO Glitch Detector
+                </h3>
+                <p class="project-description">
+                  A machine learning system that classifies 22 types of LIGO
+                  gravitational wave glitches using an ensemble of models
+                  (Random Forest, Gradient Boosting, Logistic Regression, Extra
+                  Trees). Achieved 90.8% accuracy and ≥85% recall on most
+                  classes.
+                </p>
+                <div class="project-tech-stack">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">Scikit-Learn</span>
+                  <span class="tech-tag">Ensemble Learning</span>
+                  <span class="tech-tag">Data Science</span>
+                </div>
+              </div>
+              <div class="project-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Resume Download -->
+          <div class="download-section">
+            <h3 class="download-title">Resume</h3>
+            <p class="download-description">
+              Download my comprehensive resume with AI/ML expertise and projects
+            </p>
+            <div class="download-stats">
+              <div class="stat">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Pages</span>
+              </div>
+              <div class="stat">
+                <span class="stat-format">PDF</span>
+                <span class="stat-label">Format</span>
+              </div>
+            </div>
+            <a
+              href="/resume.pdf"
+              download="AsnanP_Resume_2024.pdf"
+              class="download-btn"
+              data-cursor="button"
+            >
+              Download Resume
+            </a>
+          </div>
+        </div>
+        <div class="section-divider"></div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="ultimate-footer" id="ultimateFooter">
+      <!-- Quantum Particle Background -->
+      <div class="quantum-particles">
+        <canvas id="quantumCanvas"></canvas>
+      </div>
+
+      <!-- Main Footer Content -->
+      <div class="footer-container">
+        <div class="footer-content">
+          <!-- Brand Section -->
+          <div class="footer-brand">
+            <div class="brand-logo">
+              <div class="logo-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+              </div>
+              <div class="logo-core">
+                <img
+                  src="/assets/images/image.jpg"
+                  alt="AsnanP"
+                  class="logo-image"
+                />
+                <div class="core-pulse"></div>
+              </div>
+            </div>
+            <div class="brand-info">
+              <h3 class="brand-name">
+                <span class="letter" data-letter="A">A</span>
+                <span class="letter" data-letter="s">s</span>
+                <span class="letter" data-letter="n">n</span>
+                <span class="letter" data-letter="a">a</span>
+                <span class="letter" data-letter="n">n</span>
+                <span class="letter" data-letter="P">P</span>
+              </h3>
+              <p class="brand-tagline">AI/ML Developer & Innovator</p>
+              <div class="brand-stats">
+                <div class="stat-item">
+                  <span class="stat-number" data-target="7">0</span>
+                  <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number" data-target="200">0</span>
+                  <span class="stat-label">Hours</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number" data-target="2">0</span>
+                  <span class="stat-label">AI Models</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="footer-nav" data-cursor="default">
+            <h4 class="nav-title">Navigate</h4>
+            <div class="nav-items">
+              <a href="/pages/home.html" class="nav-item" data-section="home">
+                <div class="nav-icon">🏠</div>
+                <span class="nav-text">Home</span>
+                <div class="nav-glow"></div>
+              </a>
+              <a href="/pages/about.html" class="nav-item" data-section="about">
+                <div class="nav-icon">👨‍💻</div>
+                <span class="nav-text">About</span>
+                <div class="nav-glow"></div>
+              </a>
+              <a href="/pages/projects.html" class="nav-item" data-section="projects">
+                <div class="nav-icon">💼</div>
+                <span class="nav-text">Projects</span>
+                <div class="nav-glow"></div>
+              </a>
+              <a href="/pages/contact.html" class="nav-item" data-section="contact">
+                <div class="nav-icon">📧</div>
+                <span class="nav-text">Contact</span>
+                <div class="nav-glow"></div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="footer-social">
+            <h4 class="social-title">Connect</h4>
+            <div class="social-grid" data-cursor="default">
+              <a
+                href="https://github.com/Asnanp"
+                class="social-btn github"
+                data-platform="GitHub"
+                target="_blank"
+                rel="noopener"
+              >
+                <div class="social-bg"></div>
+                <div class="social-icon">
+                  <i class="fab fa-github"></i>
+                </div>
+                <span class="social-label">GitHub</span>
+                <div class="social-particles"></div>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/Asnanp1/"
+                class="social-btn linkedin"
+                data-platform="LinkedIn"
+                target="_blank"
+                rel="noopener"
+              >
+                <div class="social-bg"></div>
+                <div class="social-icon">
+                  <i class="fab fa-linkedin"></i>
+                </div>
+                <span class="social-label">LinkedIn</span>
+                <div class="social-particles"></div>
+              </a>
+              <a
+                href="https://www.instagram.com/asnannp/"
+                class="social-btn instagram"
+                data-platform="Instagram"
+                target="_blank"
+                rel="noopener"
+              >
+                <div class="social-bg"></div>
+                <div class="social-icon">
+                  <i class="fab fa-instagram"></i>
+                </div>
+                <span class="social-label">Instagram</span>
+                <div class="social-particles"></div>
+              </a>
+              <a
+                href="mailto:asnanp875@gmail.com"
+                class="social-btn email"
+                data-platform="Email"
+              >
+                <div class="social-bg"></div>
+                <div class="social-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <span class="social-label">Email</span>
+                <div class="social-particles"></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-left">
+            <div class="tech-stack" data-cursor="default">
+              <span class="tech-label">Built with</span>
+              <div class="tech-icons">
+                <div class="tech-icon" data-tech="HTML5">
+                  <span class="icon">🌐</span>
+                  <span class="tooltip">HTML5</span>
+                </div>
+                <div class="tech-icon" data-tech="CSS3">
+                  <span class="icon">🎨</span>
+                  <span class="tooltip">CSS3</span>
+                </div>
+                <div class="tech-icon" data-tech="JavaScript">
+                  <span class="icon">⚡</span>
+                  <span class="tooltip">JavaScript</span>
+                </div>
+                <div class="tech-icon" data-tech="Three.js">
+                  <span class="icon">🎯</span>
+                  <span class="tooltip">Three.js</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-right">
+            <div class="status-indicator">
+              <div class="status-dot"></div>
+              <span class="status-text">All Systems Operational</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back to Top -->
+      <div class="back-to-top-enhanced" id="backToTop" data-cursor="button">
+        <div class="scroll-progress"></div>
+      </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

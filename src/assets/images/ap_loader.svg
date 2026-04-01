@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  AP Loader SVG
+  A fully–black background canvas with a stylised "AP" metallic-neon logo at the centre.
+  No external images or fonts required – all vector + embedded CSS filters for glow.
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 800"
+     width="100%" height="100%"
+     preserveAspectRatio="xMidYMid meet">
+  <!-- Background -->
+  <rect width="800" height="800" fill="#000000" />
+
+  <!-- Definitions for gradients & filters -->
+  <defs>
+    <!-- Metallic gradient for stroke -->
+    <linearGradient id="metallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dfe6e9" />
+      <stop offset="50%" stop-color="#b2bec3" />
+      <stop offset="100%" stop-color="#636e72" />
+    </linearGradient>
+
+    <!-- Neon glow filter -->
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Wave path for subtle energy line behind the logo -->
+    <path id="wave-path" d="M0 0 C 50 -30 150 30 200 0 S 350 -30 400 0 S 550 30 600 0" />
+    <linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#00ffff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#8a2be2" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Energy wave animation (stroke-dashoffset animation) -->
+  <g transform="translate(200 380) scale(1.2)" opacity="0.45">
+    <use href="#wave-path" stroke="url(#wave-grad)" stroke-width="4" fill="none" stroke-linecap="round">
+      <animate attributeName="stroke-dasharray" dur="4s" repeatCount="indefinite"
+               values="0,600;300,300;600,0" />
+    </use>
+  </g>
+
+  <!-- AP Logo Text -->
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
+        font-family="'Segoe UI', Arial, sans-serif" font-size="220" fill="none"
+        stroke="url(#metallic)" stroke-width="8" filter="url(#neon-glow)">AP</text>
+
+  <!-- Percentage text placeholder (can be updated via JS if used as inline SVG) -->
+  <text id="ap-svg-percent" x="50%" y="65%" text-anchor="middle" fill="#8ecaff"
+        font-family="'Segoe UI', Arial, sans-serif" font-size="36" letter-spacing="4" opacity="0.9"
+        >0 %</text>
+</svg>

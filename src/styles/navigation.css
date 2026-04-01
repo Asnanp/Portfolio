@@ -1,0 +1,409 @@
+/* ========================================
+    NAVIGATION - MODERN DESIGN
+   ======================================== */
+
+.ultra-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.4s ease;
+}
+
+.ultra-navbar.scrolled {
+  padding: 0.75rem 0;
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ultra-nav-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.ultra-nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.ultra-nav-link {
+  position: relative;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.ultra-nav-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.ultra-nav-link:hover {
+  color: var(--text-primary);
+}
+
+.ultra-nav-link:hover::before {
+  opacity: 1;
+}
+
+.ultra-nav-link.active {
+  color: #000;
+  background: #fff;
+  box-shadow: none;
+}
+
+.ultra-nav-link.active::before {
+  opacity: 0;
+}
+
+/* Logo */
+.logo {
+  position: fixed;
+  top: 1.25rem;
+  left: 2rem;
+  width: 42px;
+  height: 42px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: none;
+  transition: all 0.4s ease;
+  font-family: var(--font-display);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* ========================================
+    AUDIO TOGGLE
+   ======================================== */
+
+.floating-audio-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.floating-audio-toggle:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.floating-audio-toggle:active {
+  transform: scale(0.95);
+}
+
+.audio-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--text-primary);
+  transition: color var(--transition-base);
+}
+
+.floating-audio-toggle[aria-pressed="false"] .audio-icon svg {
+  color: var(--text-muted);
+}
+
+.audio-tooltip {
+  position: absolute;
+  bottom: 70px;
+  right: 50%;
+  transform: translateX(50%);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.floating-audio-toggle:hover .audio-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ========================================
+    CUSTOM CURSOR (High-End Difference Blend)
+   ======================================== */
+
+.cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.cursor-core {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1), height 0.3s cubic-bezier(0.19, 1, 0.22, 1), background-color 0.3s ease;
+  will-change: transform, width, height;
+}
+
+/* Cursor Hover States */
+.cursor.cursor-hover .cursor-core {
+  width: 48px;
+  height: 48px;
+  background: #fff;
+}
+
+/* Hide outer/aura globally since we are using a single crisp dot now */
+.cursor-aura,
+.cursor-outer {
+  display: none !important;
+}
+
+/* ========================================
+    SCROLL INDICATOR
+   ======================================== */
+
+.professional-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+  transition: all var(--transition-base);
+}
+
+.professional-scroll-indicator:hover {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.scroll-icon {
+  width: 28px;
+  height: 42px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  position: relative;
+}
+
+.scroll-wheel {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+  animation: scrollWheel 2s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+  0%, 100% { 
+    opacity: 1; 
+    transform: translateX(-50%) translateY(0); 
+  }
+  50% { 
+    opacity: 0.5; 
+    transform: translateX(-50%) translateY(12px); 
+  }
+}
+
+.scroll-arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgba(255, 255, 255, 0.3);
+  animation: arrowDown 1.5s ease-in-out infinite;
+}
+
+.arrow-1 { animation-delay: 0s; }
+.arrow-2 { animation-delay: 0.15s; }
+.arrow-3 { animation-delay: 0.3s; }
+
+@keyframes arrowDown {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(4px); }
+}
+
+.scroll-text {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* ========================================
+    BACK TO TOP
+   ======================================== */
+
+.back-to-top-enhanced {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--transition-base);
+}
+
+.back-to-top-enhanced.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top-enhanced:hover {
+  background: #fff;
+  border-color: transparent;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+}
+
+.back-to-top-enhanced:hover::before {
+  color: #000;
+}
+
+.back-to-top-enhanced::before {
+  content: '↑';
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.scroll-progress {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.scroll-progress::after {
+  content: '';
+  display: block;
+  width: var(--scroll-progress, 0%);
+  height: 100%;
+  background: #fff;
+  transition: width 0.1s ease;
+}
+
+/* ========================================
+    FLOATING ORBS — HIDDEN (monochrome)
+   ======================================== */
+
+.floating-orbs {
+  display: none; /* Kill all colorful floating orbs */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ultra-nav-links {
+    gap: 0.25rem;
+  }
+  
+  .ultra-nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .logo {
+    width: 42px;
+    height: 42px;
+    font-size: 1.25rem;
+    top: 1rem;
+    left: 1rem;
+  }
+  
+  .floating-audio-toggle {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .back-to-top-enhanced {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}

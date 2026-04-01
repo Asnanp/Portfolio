@@ -1,0 +1,236 @@
+/* ========================================
+    SCROLL ANIMATIONS — Monochrome Cinematic
+   ======================================== */
+
+/* ===== Scroll Progress Bar — White ===== */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+/* ===== Film Grain — Very subtle ===== */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* ===== Split Text Characters ===== */
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.split-char {
+  display: inline-block;
+  will-change: transform, opacity;
+  color: inherit;
+  -webkit-text-fill-color: inherit;
+}
+
+.split-space {
+  display: inline-block;
+  width: 0.3em;
+}
+
+.scramble-char {
+  color: var(--grey-3);
+  font-weight: inherit;
+}
+
+/* ===== Horizontal Scroll ===== */
+.projects-horizontal-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.projects-horizontal-track {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 4vw;
+  width: max-content;
+  will-change: transform;
+}
+
+.projects-horizontal-track .project-card {
+  width: 400px;
+  min-width: 400px;
+  flex-shrink: 0;
+}
+
+/* ===== Section Transition — Clean ===== */
+body::after {
+  display: none; /* No colored radial gradients */
+}
+
+/* ===== Click Ripple — White ===== */
+.click-ripple {
+  position: fixed;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+}
+
+/* ===== Section Divider — Subtle ===== */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.06) 70%,
+    transparent 100%
+  );
+  margin: 0;
+}
+
+.section-divider::after {
+  display: none;
+}
+
+/* ===== Parallax Elements ===== */
+[data-speed] {
+  will-change: transform;
+}
+
+/* ===== Highlight Text ===== */
+.bio-text .highlight {
+  background: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ===== Smooth Lenis Body ===== */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ===== Card hover ===== */
+.project-card {
+  transition: all 0.6s var(--ease-out-expo);
+}
+
+/* ===== Stagger Animation ===== */
+.stagger-up > * {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.stagger-up.active > * {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s var(--ease-out-expo);
+}
+
+.stagger-up.active > *:nth-child(1) { transition-delay: 0.0s; }
+.stagger-up.active > *:nth-child(2) { transition-delay: 0.1s; }
+.stagger-up.active > *:nth-child(3) { transition-delay: 0.15s; }
+.stagger-up.active > *:nth-child(4) { transition-delay: 0.2s; }
+.stagger-up.active > *:nth-child(5) { transition-delay: 0.25s; }
+.stagger-up.active > *:nth-child(6) { transition-delay: 0.3s; }
+
+/* ===== CTA Glow — White Pulse ===== */
+@keyframes glowPulseBtn {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+  }
+}
+
+.get,
+.submit-btn,
+.download-btn {
+  animation: glowPulseBtn 4s ease-in-out infinite;
+}
+
+/* ===== Scroll Indicator ===== */
+.professional-scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ===== About Perspective ===== */
+.about-container {
+  perspective: 1200px;
+}
+
+/* ===== Smooth visibility ===== */
+.project-card,
+.stat-item,
+.content-block,
+.holo-card,
+.form-group,
+.neo-btn {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 968px) {
+  .projects-horizontal-wrapper {
+    overflow: visible;
+  }
+
+  .projects-horizontal-track {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+  }
+
+  .projects-horizontal-track .project-card {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .grain-overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-progress-bar {
+    height: 1px;
+  }
+}

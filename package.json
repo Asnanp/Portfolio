@@ -1,0 +1,39 @@
+{
+  "name": "asnanp-portfolio",
+  "version": "1.0.0",
+  "description": "Modern portfolio website with Three.js, GSAP, and smooth scrolling",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:staging": "vite build --mode staging",
+    "build:prod": "vite build --mode production",
+    "preview": "vite preview",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write \"src/**/*.{js,css,html}\""
+  },
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^5.2.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.4",
+    "vite": "^5.0.12",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-pwa": "^0.17.5"
+  },
+  "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "dat.gui": "^0.7.9",
+    "gsap": "^3.13.0",
+    "simplex-noise": "^4.0.3",
+    "three": "^0.161.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ],
+  "main": "sw.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
