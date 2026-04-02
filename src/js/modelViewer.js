@@ -10,6 +10,9 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+// Import the 3D model so Vite explicitly includes it in the production build
+import robotModelUrl from '../assets/models/360_sphere_robot_no_glass.glb?url';
+
 gsap.registerPlugin(ScrollTrigger);
 
 let scene, camera, renderer, model, mixer;
@@ -117,7 +120,7 @@ async function loadModel() {
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
 
-    const modelPath = '/assets/models/360_sphere_robot_no_glass.glb';
+    const modelPath = robotModelUrl;
 
     loader.load(
       modelPath,
